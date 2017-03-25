@@ -25,4 +25,5 @@ cd /opt/minecraft/
 #---------------------------------------------------------------------
 #Launch Minecraft
 #---------------------------------------------------------------------
-su -l -c "java -Xms512M -Xmx1G -XX:MaxPermSize=128M -XX:+UseConcMarkSweepGC -jar /opt/minecraft/spigot-1.11.2.jar" minecraft
+
+sudo screen -d -m -S minecraft su -l -c "su -l -c "java -Xms512M -d64 -Xmx12G -XX:MaxPermSize=128M -XX:+UseConcMarkSweepGC -jar /opt/minecraft/spigot-1.11.2.jar" minecraft
