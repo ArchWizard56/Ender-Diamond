@@ -1,0 +1,15 @@
+#!/bin/bash
+#---------------------------------------------------------------------
+#  Do application and security updates
+#---------------------------------------------------------------------
+yum update -y
+yum -y install java-1.8.0-openjdk.x86_64
+yum -y remove java-1.7.0-openjdk.x86_64
+
+#---------------------------------------------------------------------
+#  Grab the latest Minecraft start script from GitHub then delete it after it runs
+#---------------------------------------------------------------------
+wget https://github.com/ArchWizard56/Ender-Diamond/blob/master/start_mc.sh
+/bin/bash start_mc.sh 
+rm start_mc.sh
+
