@@ -14,7 +14,7 @@ SCREEN="minecraft"
 if [ $TIME == "now" ] || [ $TIME == "Now" ] ; then
 	screen -S ${SCREEN} -X stuff "say Server will now shutdown!$(printf \\r)"
 	screen -S ${SCREEN} -X stuff "stop$(printf \\r)"
-	`sleep 1  
+	sleep 5  
 	echo "Sent shutdown command"
 	exit 
 fi
@@ -22,6 +22,12 @@ fi
 #broadcast time remaining
 #-----------------------------------------
 screen -S ${SCREEN} -X stuff "say Server will shutdown in ${TIME} minutes!$(printf \\r)"
+#----------------------------------------
+#Sleep until time expires
+#----------------------------------------
+timeToSleep=$(($TIME * 60))
+echo "Sleeping for ${timeToSleep} seconds"
+sleep $timeToSleep
 #-----------------------------------------
 #shutdown server
 #-----------------------------------------
