@@ -1,6 +1,7 @@
 #!/bin/bash
 #-----------------------------------------
 #this script must be run as root
+#this script requires that the essentials plugin be installed
 #-----------------------------------------
 #------------------------------------------
 #define variables
@@ -11,7 +12,18 @@ SCREEN="minecraft"
 #If time is now do something special
 #------------------------------------------
 if [ $TIME == "now" ] || [ $TIME == "Now" ] ; then
-	screen -S minecraft -X stuff "broadcast Server will now shutdown!$(printf \\r)"
-	sleep 1
+	screen -S minecraft -X stuff "say Server will now shutdown!$(printf \\r)"
+	sleep
+	exit  1
+	echo "Sent shutdown command"
+	exit 
 fi
+#-----------------------------------------
+#broadcast time remaining
+#-----------------------------------------
+screen -S minecraft -X stuff "say Server will shutdown in ${TIME} minutes!$(printf \\r)"
+#-----------------------------------------
+#shutdown server
+#-----------------------------------------
+screen -S minecraft -X stuff "stop$(printf \\r)"
 
