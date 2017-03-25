@@ -37,4 +37,4 @@ mount /dev/xvdb /opt/minecraft
 useradd -r -d /opt/minecraft/mcadmin -g minecraft -u 25565 -s /bin/bash mcadmin
 cd /opt/minecraft/Spigot/Latest
 #---------------------------------------------------------------------
-su -l -c "java -Xms512M -Xmx1G -XX:MaxPermSize=128M -XX:+UseConcMarkSweepGC -jar /opt/minecraft/Spigot/Latest/spigot-1.11.jar" minecraft
+su -l -c "java -Xms512M -Xmx1G -XX:MaxPermSize=128M -XX:+UseConcMarkSweepGC -jar /opt/minecraft/Spigot/Latest/spigot-1.11.2.jar" minecraft
