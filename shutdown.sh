@@ -8,6 +8,8 @@
 #------------------------------------------
 TIME=$1
 SCREEN="minecraft"
+BUCKET="ykcdxelbza-instance-stores/ProjectEnderDiamond/Latest/"
+MINECRAFTLOCATION="/opt/minecraft"
 #------------------------------------------
 #If time is now do something special
 #------------------------------------------
@@ -15,7 +17,11 @@ if [ $TIME == "now" ] || [ $TIME == "Now" ] ; then
 	screen -S ${SCREEN} -X stuff "say Server will now shutdown!$(printf \\r)"
 	sleep 5  
         screen -S ${SCREEN} -X stuff "stop$(printf \\r)"
-	echo "Sent shutdown command"
+        echo "Sent shutdown command"
+	sleep 7
+	echo "Starting s3 sync"
+	aws s3 sync ${MINECRAFTLOCATION} s3://${BUCKET}
+	echo "s3 sync finished!"
 	exit 
 fi
 #-----------------------------------------
@@ -32,4 +38,10 @@ sleep $timeToSleep
 #shutdown server
 #-----------------------------------------
 screen -S ${SCREEN} -X stuff "stop$(printf \\r)"
+echo "Sent shutdown command"
+sleep 7
+echo "Starting s3 sync"
+aws s3 sync ${MINECRAFTLOCATION} s3://${BUCKET}
+echo "s3 sync finished!"
+
 
