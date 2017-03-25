@@ -13,8 +13,8 @@ SCREEN="minecraft"
 #------------------------------------------
 if [ $TIME == "now" ] || [ $TIME == "Now" ] ; then
 	screen -S ${SCREEN} -X stuff "say Server will now shutdown!$(printf \\r)"
-	screen -S ${SCREEN} -X stuff "stop$(printf \\r)"
 	sleep 5  
+        screen -S ${SCREEN} -X stuff "stop$(printf \\r)"
 	echo "Sent shutdown command"
 	exit 
 fi
