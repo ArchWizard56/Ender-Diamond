@@ -23,7 +23,7 @@ chown -R minecraft:minecraft /opt/minecraft
 
 cd /opt/minecraft/
 #---------------------------------------------------------------------
-#Launch Minecraft
+#Launch the minecraft server
 #---------------------------------------------------------------------
 
 sudo screen -d -m -S minecraft su -l -c "su -l -c "java -Xms512M -d64 -Xmx12G -XX:MaxPermSize=128M -XX:+UseConcMarkSweepGC -jar /opt/minecraft/spigot-1.11.2.jar" minecraft
